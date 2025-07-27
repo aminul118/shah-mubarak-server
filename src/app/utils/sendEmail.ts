@@ -8,11 +8,14 @@ import envVars from "../config/env";
 
 const transporter = nodemailer.createTransport({
   host: envVars.EMAIL_SENDER.SMTP_HOST,
-  port: envVars.EMAIL_SENDER.SMTP_PORT,
-  secure: envVars.EMAIL_SENDER.SMTP_PORT === 465,
+  port: 587,
+  secure: false,
   auth: {
     user: envVars.EMAIL_SENDER.SMTP_USER,
     pass: envVars.EMAIL_SENDER.SMTP_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -28,7 +31,7 @@ interface SendEmailOptions {
   }[];
 }
 
-export const sendEmail = async ({
+const sendEmail = async ({
   to,
   subject,
   templateName,
@@ -55,3 +58,5 @@ export const sendEmail = async ({
     throw new AppError(401, "Email error");
   }
 };
+
+export default sendEmail;
