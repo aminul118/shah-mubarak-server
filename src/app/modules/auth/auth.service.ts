@@ -7,7 +7,7 @@ import { JwtPayload } from "jsonwebtoken";
 import envVars from "../../config/env";
 import { IAuthProvider, IsActive } from "../user/user.interface";
 import jwt from "jsonwebtoken";
-import sendEmail from "../../utils/sendEmail";
+import { sendEmail } from "../../utils/sendEmail";
 
 const getNewAccessToken = async (refreshToken: string) => {
   return await createNewAccessTokenWithRefreshToken(refreshToken);

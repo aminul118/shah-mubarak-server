@@ -7,10 +7,12 @@ import { generateJitsiLink } from "./schedule.utils";
 import envVars from "../../config/env";
 
 const createSchedule = async (payload: ISchedule) => {
-  const isExists = await Schedule.findOne({ subject: payload.subject });
+  const isExists = await Schedule.findOne({
+    scheduleDate: payload.scheduleDate,
+  });
 
   if (isExists) {
-    throw new AppError(httpStatus.BAD_REQUEST, "Already Booked this schedule");
+    throw new AppError(httpStatus.BAD_REQUEST, "This slot already booked");
   }
 
   const meetLink = await generateJitsiLink();
@@ -38,7 +40,7 @@ const createSchedule = async (payload: ISchedule) => {
       meetLink: result.meetLink,
     },
   });
-
+ 
   await sendEmail({
     to: envVars.ADMIN_EMAIL,
     subject: `New Meeting Scheduled: ${result.subject}`,
