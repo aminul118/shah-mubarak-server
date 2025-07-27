@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Schedule Notification</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #1a73e8;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .info {
+        margin-top: 20px;
+      }
+      .info p {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .label {
+        font-weight: bold;
+        color: #333;
+      }
+      .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+      }
+      a.meet-link {
+        color: #1a73e8;
+        text-decoration: none;
+      }
+      a.meet-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>📝 New Schedule Booking Received</h2>
+
+      <div class="info">
+        <p><span class="label">Name:</span> <%= name %></p>
+        <p><span class="label">Email:</span> <%= email %></p>
+        <p><span class="label">Phone:</span> <%= phone %></p>
+        <% if (message) { %>
+        <p><span class="label">Message:</span> <%= message %></p>
+        <% } %>
+        <p><span class="label">Scheduled Date:</span> <%= scheduleDate %></p>
+        <p>
+          <span class="label">Meeting Link:</span>
+          <a
+            class="meet-link"
+            href="<%= meetLink %>"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join Meeting
+          </a>
+        </p>
+      </div>
+
+      <div class="footer">
+        This message was generated automatically from your website's schedule
+        form.
+      </div>
+    </div>
+  </body>
+</html>
