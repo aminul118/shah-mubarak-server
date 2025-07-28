@@ -23,6 +23,7 @@ interface EnvConfig {
   GOOGLE_PRIVATE_KEY: string;
   CALENDAR_ID: string;
   ADMIN_EMAIL: string;
+  ADMIN_NAME: string;
 
   CLOUDINARY: {
     CLOUDINARY_NAME: string;
@@ -67,6 +68,7 @@ const loadEnvVariables = (): EnvConfig => {
     GOOGLE_PRIVATE_KEY: getEnv("GOOGLE_PRIVATE_KEY"),
     CALENDAR_ID: getEnv("CALENDAR_ID"),
     ADMIN_EMAIL: getEnv("ADMIN_EMAIL"),
+    ADMIN_NAME: getEnv("ADMIN_NAME"),
 
     CLOUDINARY: {
       CLOUDINARY_NAME: getEnv("CLOUDINARY_NAME"),

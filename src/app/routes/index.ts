@@ -2,6 +2,7 @@ import { Router } from "express";
 import { UserRoutes } from "../modules/user/user.routes";
 import AuthRouter from "../modules/auth/auth.route";
 import { ScheduleRouter } from "../modules/schedule/schedule.routes";
+import { ContactRouter } from "../modules/contact/contact.route";
 
 interface IModuleRoutes {
   path: string;
@@ -22,6 +23,10 @@ const moduleRoutes: IModuleRoutes[] = [
   {
     path: "/schedule",
     route: ScheduleRouter,
+  },
+  {
+    path: "/contact",
+    route: ContactRouter,
   },
 ];
 

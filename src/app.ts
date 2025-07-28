@@ -41,6 +41,7 @@ app.use(passport.session());
 // CORS configuration (proper dynamic origin checking)
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:3001",
   "https://www.shahmubaruk.com",
   "https://shahmubaruk.com",
 ];
