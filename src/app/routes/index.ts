@@ -3,6 +3,7 @@ import { UserRoutes } from "../modules/user/user.routes";
 import AuthRouter from "../modules/auth/auth.route";
 import { ScheduleRouter } from "../modules/schedule/schedule.routes";
 import { ContactRouter } from "../modules/contact/contact.route";
+import { SubscriptionRoute } from "../modules/subscription/subscription.route";
 
 interface IModuleRoutes {
   path: string;
@@ -13,25 +14,29 @@ const router = Router();
 
 const moduleRoutes: IModuleRoutes[] = [
   {
-    path: "/user",
+    path: "user",
     route: UserRoutes,
   },
   {
-    path: "/auth",
+    path: "auth",
     route: AuthRouter,
   },
   {
-    path: "/schedule",
+    path: "schedule",
     route: ScheduleRouter,
   },
   {
-    path: "/contact",
+    path: "contact",
     route: ContactRouter,
+  },
+  {
+    path: "subscription",
+    route: SubscriptionRoute,
   },
 ];
 
 moduleRoutes.forEach((r) => {
-  router.use(r.path, r.route);
+  router.use(`/${r.path}`, r.route);
 });
 
 export default router;

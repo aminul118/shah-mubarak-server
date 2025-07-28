@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Subscriber Alert</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #1a73e8;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .info {
+        margin-top: 20px;
+      }
+      .info p {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .label {
+        font-weight: bold;
+        color: #333;
+      }
+      .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+      }
+      a {
+        color: #1a73e8;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>📩 New Subscriber Notification</h2>
+
+      <div class="info">
+        <p>Hello Shah Mubarak,</p>
+        <p>
+          A new user just subscribed:
+          <br />
+          <strong>Email:</strong> <%= email %><br />
+          <strong>Time:</strong> <%= time %>
+        </p>
+      </div>
+
+      <div class="footer">
+        This is an automated alert from
+        <a href="https://www.shahmubaruk.com">Shah Mubarak</a>.
+      </div>
+    </div>
+  </body>
+</html>
