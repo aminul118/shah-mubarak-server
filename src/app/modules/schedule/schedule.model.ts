@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { ISchedule } from "./schedule.interface";
+import { Schema, model } from 'mongoose';
+import { ISchedule } from './schedule.interface';
 
 const scheduleSchema = new Schema<ISchedule>(
   {
@@ -50,6 +50,6 @@ const scheduleSchema = new Schema<ISchedule>(
   },
 );
 
-const Schedule = model<ISchedule>("Schedule", scheduleSchema);
+const Schedule = model<ISchedule>('Schedule', scheduleSchema);
 
 export { Schedule };

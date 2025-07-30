@@ -1,12 +1,12 @@
-import dotenv from "dotenv";
-import path from "path";
+import dotenv from 'dotenv';
+import path from 'path';
 
-dotenv.config({ path: path.join(process.cwd(), ".env") });
+dotenv.config({ path: path.join(process.cwd(), '.env') });
 
 interface EnvConfig {
   PORT: string;
   DB_URL: string;
-  NODE_ENV: "development" | "production";
+  NODE_ENV: 'development' | 'production';
   JWT_ACCESS_SECRET: string;
   JWT_ACCESS_EXPIRES: string;
   JWT_REFRESH_SECRET: string;
@@ -49,38 +49,38 @@ const getEnv = (key: string): string => {
 
 const loadEnvVariables = (): EnvConfig => {
   return {
-    PORT: getEnv("PORT"),
-    DB_URL: getEnv("DB_URL"),
-    NODE_ENV: getEnv("NODE_ENV") as "development" | "production",
-    JWT_ACCESS_SECRET: getEnv("JWT_ACCESS_SECRET"),
-    JWT_ACCESS_EXPIRES: getEnv("JWT_ACCESS_EXPIRES"),
-    JWT_REFRESH_SECRET: getEnv("JWT_REFRESH_SECRET"),
-    JWT_REFRESH_EXPIRES: getEnv("JWT_REFRESH_EXPIRES"),
-    BCRYPT_SALT_ROUND: Number(getEnv("BCRYPT_SALT_ROUND")),
-    SUPER_ADMIN_EMAIL: getEnv("SUPER_ADMIN_EMAIL"),
-    SUPER_ADMIN_PASSWORD: getEnv("SUPER_ADMIN_PASSWORD"),
-    GOOGLE_CLIENT_ID: getEnv("GOOGLE_CLIENT_ID"),
-    GOOGLE_CLIENT_SECRET: getEnv("GOOGLE_CLIENT_SECRET"),
-    GOOGLE_CALLBACK_URL: getEnv("GOOGLE_CALLBACK_URL"),
-    EXPRESS_SESSION_SECRET: getEnv("EXPRESS_SESSION_SECRET"),
-    FRONTEND_URL: getEnv("FRONTEND_URL"),
-    GOOGLE_CLIENT_EMAIL: getEnv("GOOGLE_CLIENT_EMAIL"),
-    GOOGLE_PRIVATE_KEY: getEnv("GOOGLE_PRIVATE_KEY"),
-    CALENDAR_ID: getEnv("CALENDAR_ID"),
-    ADMIN_EMAIL: getEnv("ADMIN_EMAIL"),
-    ADMIN_NAME: getEnv("ADMIN_NAME"),
+    PORT: getEnv('PORT'),
+    DB_URL: getEnv('DB_URL'),
+    NODE_ENV: getEnv('NODE_ENV') as 'development' | 'production',
+    JWT_ACCESS_SECRET: getEnv('JWT_ACCESS_SECRET'),
+    JWT_ACCESS_EXPIRES: getEnv('JWT_ACCESS_EXPIRES'),
+    JWT_REFRESH_SECRET: getEnv('JWT_REFRESH_SECRET'),
+    JWT_REFRESH_EXPIRES: getEnv('JWT_REFRESH_EXPIRES'),
+    BCRYPT_SALT_ROUND: Number(getEnv('BCRYPT_SALT_ROUND')),
+    SUPER_ADMIN_EMAIL: getEnv('SUPER_ADMIN_EMAIL'),
+    SUPER_ADMIN_PASSWORD: getEnv('SUPER_ADMIN_PASSWORD'),
+    GOOGLE_CLIENT_ID: getEnv('GOOGLE_CLIENT_ID'),
+    GOOGLE_CLIENT_SECRET: getEnv('GOOGLE_CLIENT_SECRET'),
+    GOOGLE_CALLBACK_URL: getEnv('GOOGLE_CALLBACK_URL'),
+    EXPRESS_SESSION_SECRET: getEnv('EXPRESS_SESSION_SECRET'),
+    FRONTEND_URL: getEnv('FRONTEND_URL'),
+    GOOGLE_CLIENT_EMAIL: getEnv('GOOGLE_CLIENT_EMAIL'),
+    GOOGLE_PRIVATE_KEY: getEnv('GOOGLE_PRIVATE_KEY'),
+    CALENDAR_ID: getEnv('CALENDAR_ID'),
+    ADMIN_EMAIL: getEnv('ADMIN_EMAIL'),
+    ADMIN_NAME: getEnv('ADMIN_NAME'),
 
     CLOUDINARY: {
-      CLOUDINARY_NAME: getEnv("CLOUDINARY_NAME"),
-      CLOUDINARY_API_KEY: getEnv("CLOUDINARY_API_KEY"),
-      CLOUDINARY_API_SECRET: getEnv("CLOUDINARY_API_SECRET"),
+      CLOUDINARY_NAME: getEnv('CLOUDINARY_NAME'),
+      CLOUDINARY_API_KEY: getEnv('CLOUDINARY_API_KEY'),
+      CLOUDINARY_API_SECRET: getEnv('CLOUDINARY_API_SECRET'),
     },
     EMAIL_SENDER: {
-      SMTP_HOST: getEnv("SMTP_HOST"),
-      SMTP_PORT: Number(getEnv("SMTP_PORT")),
-      SMTP_USER: getEnv("SMTP_USER"),
-      SMTP_PASS: getEnv("SMTP_PASS"),
-      SMTP_FORM: getEnv("SMTP_FORM"),
+      SMTP_HOST: getEnv('SMTP_HOST'),
+      SMTP_PORT: Number(getEnv('SMTP_PORT')),
+      SMTP_USER: getEnv('SMTP_USER'),
+      SMTP_PASS: getEnv('SMTP_PASS'),
+      SMTP_FORM: getEnv('SMTP_FORM'),
     },
   };
 };

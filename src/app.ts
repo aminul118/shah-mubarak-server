@@ -1,14 +1,14 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import passport from "passport";
-import expressSession from "express-session";
-import helmet from "helmet";
-import router from "./app/routes";
-import notFound from "./app/middlewares/notFound";
-import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
-import envVars from "./app/config/env";
-import "./app/config/passport";
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import passport from 'passport';
+import expressSession from 'express-session';
+import helmet from 'helmet';
+import router from './app/routes';
+import notFound from './app/middlewares/notFound';
+import { globalErrorHandler } from './app/middlewares/globalErrorHandler';
+import envVars from './app/config/env';
+import './app/config/passport';
 
 const app = express();
 
@@ -40,10 +40,10 @@ app.use(passport.session());
 
 // CORS configuration (proper dynamic origin checking)
 const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://www.shahmubaruk.com",
-  "https://shahmubaruk.com",
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://www.shahmubaruk.com',
+  'https://shahmubaruk.com',
 ];
 
 app.use(
@@ -52,7 +52,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error('Not allowed by CORS'));
       }
     },
     credentials: true,
@@ -60,13 +60,13 @@ app.use(
 );
 
 // Routes
-app.use("/api/v1", router);
+app.use('/api/v1', router);
 
 // Health check
-app.get("/", (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
-    message: "🚀 Shah Mubarak server is up and running!",
+    message: '🚀 Shah Mubarak server is up and running!',
     timestamp: new Date().toISOString(),
   });
 });

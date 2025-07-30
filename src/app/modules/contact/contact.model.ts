@@ -1,9 +1,9 @@
-import { Schema, model } from "mongoose";
-import { IContact } from "./contact.interface";
+import { Schema, model } from 'mongoose';
+import { IContact } from './contact.interface';
 
 const emailRegex = new RegExp(
   '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@(([^<>()[\\]\\.,;:\\s@"]+\\.)+[^<>()[\\]\\.,;:\\s@"]{2,})$',
-  "i",
+  'i',
 );
 
 const contactSchema = new Schema<IContact>(
@@ -17,7 +17,7 @@ const contactSchema = new Schema<IContact>(
     email: {
       type: String,
       required: true,
-      match: [emailRegex, "Please fill a valid email address"],
+      match: [emailRegex, 'Please fill a valid email address'],
     },
     subject: { type: String, required: true },
     message: { type: String, required: true },
@@ -28,6 +28,6 @@ const contactSchema = new Schema<IContact>(
   },
 );
 
-const Contact = model<IContact>("Contact", contactSchema);
+const Contact = model<IContact>('Contact', contactSchema);
 
 export { Contact };

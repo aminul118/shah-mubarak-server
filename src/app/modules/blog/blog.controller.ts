@@ -1,8 +1,8 @@
-import httpStatus from "http-status-codes";
-import { Request, Response } from "express";
-import catchAsync from "../../utils/catchAsync";
-import sendResponse from "../../utils/sendResponse";
-import { BlogServices } from "./blog.service";
+import httpStatus from 'http-status-codes';
+import { Request, Response } from 'express';
+import catchAsync from '../../utils/catchAsync';
+import sendResponse from '../../utils/sendResponse';
+import { BlogServices } from './blog.service';
 
 const createBlog = catchAsync(async (req: Request, res: Response) => {
   const payload = req.body;
@@ -10,7 +10,7 @@ const createBlog = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
-    message: "Blog create successfully",
+    message: 'Blog create successfully',
     data,
   });
 });
@@ -20,7 +20,7 @@ const getBlogs = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Blog retrieve successfully",
+    message: 'Blog retrieve successfully',
     data,
   });
 });

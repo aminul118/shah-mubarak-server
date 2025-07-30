@@ -1,5 +1,5 @@
-import { model, Schema } from "mongoose";
-import { ISubscription } from "./subscription.interface";
+import { model, Schema } from 'mongoose';
+import { ISubscription } from './subscription.interface';
 
 const subscriptionSchema = new Schema<ISubscription>(
   {
@@ -14,6 +14,6 @@ const subscriptionSchema = new Schema<ISubscription>(
   },
 );
 
-const Subscription = model<ISubscription>("Subscription", subscriptionSchema);
+const Subscription = model<ISubscription>('Subscription', subscriptionSchema);
 
 export { Subscription };

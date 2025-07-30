@@ -1,13 +1,13 @@
-import envVars from "../../config/env";
-import sendEmail from "../../utils/sendEmail";
-import { IContact } from "./contact.interface";
+import envVars from '../../config/env';
+import sendEmail from '../../utils/sendEmail';
+import { IContact } from './contact.interface';
 
 const createContact = async (payload: IContact) => {
   // Sent email to User
   await sendEmail({
     to: payload.email,
     subject: `Contact Email Received`,
-    templateName: "contactReply",
+    templateName: 'contactReply',
     templateData: {
       name: payload.name,
       adminName: envVars.ADMIN_NAME,
@@ -18,7 +18,7 @@ const createContact = async (payload: IContact) => {
   await sendEmail({
     to: envVars.ADMIN_EMAIL,
     subject: `${payload.subject}`,
-    templateName: "contactAdmin",
+    templateName: 'contactAdmin',
     templateData: {
       name: payload.name,
       email: payload.email,

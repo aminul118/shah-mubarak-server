@@ -1,10 +1,10 @@
-import { Router } from "express";
-import { UserRoutes } from "../modules/user/user.routes";
-import AuthRouter from "../modules/auth/auth.route";
-import { ScheduleRouter } from "../modules/schedule/schedule.routes";
-import { ContactRouter } from "../modules/contact/contact.route";
-import { SubscriptionRoute } from "../modules/subscription/subscription.route";
-import { BlogRouter } from "../modules/blog/blog.route";
+import { Router } from 'express';
+import { UserRoutes } from '../modules/user/user.routes';
+import AuthRouter from '../modules/auth/auth.route';
+import { ScheduleRouter } from '../modules/schedule/schedule.routes';
+import { ContactRouter } from '../modules/contact/contact.route';
+import { SubscriptionRoute } from '../modules/subscription/subscription.route';
+import { BlogRouter } from '../modules/blog/blog.route';
 
 interface IModuleRoutes {
   path: string;
@@ -15,27 +15,27 @@ const router = Router();
 
 const moduleRoutes: IModuleRoutes[] = [
   {
-    path: "user",
+    path: 'user',
     route: UserRoutes,
   },
   {
-    path: "auth",
+    path: 'auth',
     route: AuthRouter,
   },
   {
-    path: "schedule",
+    path: 'schedule',
     route: ScheduleRouter,
   },
   {
-    path: "blog",
+    path: 'blog',
     route: BlogRouter,
   },
   {
-    path: "contact",
+    path: 'contact',
     route: ContactRouter,
   },
   {
-    path: "subscription",
+    path: 'subscription',
     route: SubscriptionRoute,
   },
 ];

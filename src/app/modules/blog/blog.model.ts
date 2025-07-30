@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { IBlog } from "./blog.interface";
+import { Schema, model } from 'mongoose';
+import { IBlog } from './blog.interface';
 
 const blogSchema = new Schema<IBlog>(
   {
@@ -24,6 +24,6 @@ const blogSchema = new Schema<IBlog>(
   },
 );
 
-const Blog = model<IBlog>("Blog", blogSchema);
+const Blog = model<IBlog>('Blog', blogSchema);
 
 export { Blog };

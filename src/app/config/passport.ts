@@ -1,40 +1,35 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import passport from "passport";
+import passport from 'passport';
 import {
   Strategy as GoogleStrategy,
   Profile,
   StrategyOptions as GoogleStrategyOptions,
   VerifyCallback as GoogleVerifyCallback,
-} from "passport-google-oauth20";
+} from 'passport-google-oauth20';
 
 import {
   Strategy as LocalStrategy,
   IStrategyOptionsWithRequest,
   VerifyFunctionWithRequest,
-} from "passport-local";
+} from 'passport-local';
 
-import bcrypt from "bcryptjs";
-import envVars from "./env";
-import { User } from "../modules/user/user.model";
-import { Role } from "../modules/user/user.interface";
+import bcrypt from 'bcryptjs';
+import envVars from './env';
+import { User } from '../modules/user/user.model';
+import { Role } from '../modules/user/user.interface';
 
 // ----------------------------
 // Local Strategy (email/password)
 // ----------------------------
 
 const localStrategyOptions: IStrategyOptionsWithRequest = {
-  usernameField: "email",
-  passwordField: "password",
+  usernameField: 'email',
+  passwordField: 'password',
   passReqToCallback: true,
 };
 
-const localVerifyFunction: VerifyFunctionWithRequest = async (
-  req,
-  email,
-  password,
-  done,
-) => {
+const localVerifyFunction: VerifyFunctionWithRequest = async (req, email, password, done) => {
   try {
     const user = await User.findOne({ email });
 
@@ -43,27 +38,24 @@ const localVerifyFunction: VerifyFunctionWithRequest = async (
     }
 
     const isGoogleAuthenticate: boolean = user.auths.some((providerObj) => {
-      return providerObj.provider === "google";
+      return providerObj.provider === 'google';
     });
 
     if (isGoogleAuthenticate && !user.password) {
       return done(
-        "You have authenticated through Google. So if you want to login with credentials, then at first login with google and set a password for your Gmail and then you can login with email and password",
+        'You have authenticated through Google. So if you want to login with credentials, then at first login with google and set a password for your Gmail and then you can login with email and password',
       );
     }
 
-    const isPasswordMatched = await bcrypt.compare(
-      password,
-      user.password as string,
-    );
+    const isPasswordMatched = await bcrypt.compare(password, user.password as string);
 
     if (!isPasswordMatched) {
-      return done("Incorrect password");
+      return done('Incorrect password');
     }
 
     return done(null, user);
   } catch (error) {
-    if (envVars.NODE_ENV === "development") {
+    if (envVars.NODE_ENV === 'development') {
       console.log(error);
     }
     return done(error);
@@ -89,7 +81,7 @@ const googleVerifyFunction = async (
     const email = profile.emails?.[0]?.value;
 
     if (!email) {
-      return done("No email found");
+      return done('No email found');
     }
 
     let user = await User.findOne({ email });
@@ -103,7 +95,7 @@ const googleVerifyFunction = async (
         isVerified: true,
         auths: [
           {
-            provider: "google",
+            provider: 'google',
             providerId: profile.id,
           },
         ],
@@ -112,7 +104,7 @@ const googleVerifyFunction = async (
 
     return done(null, user);
   } catch (error) {
-    console.error("Google strategy error:", error);
+    console.error('Google strategy error:', error);
     return done(error);
   }
 };
@@ -130,18 +122,16 @@ passport.serializeUser((user: any, done: (err: any, id?: unknown) => void) => {
   done(null, user._id);
 });
 
-passport.deserializeUser(
-  async (id: string, done: (err: any, user?: any) => void) => {
-    try {
-      const user = await User.findById(id);
-      done(null, user);
-    } catch (error) {
-      if (envVars.NODE_ENV === "development") {
-        console.log("Deserialize", error);
-      }
-      done(error);
+passport.deserializeUser(async (id: string, done: (err: any, user?: any) => void) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    if (envVars.NODE_ENV === 'development') {
+      console.log('Deserialize', error);
     }
-  },
-);
+    done(error);
+  }
+});
 
 export default passport;
