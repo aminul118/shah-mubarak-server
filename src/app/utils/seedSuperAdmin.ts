@@ -19,7 +19,7 @@ const seedSupperAdmin = async () => {
 
     const hashedPassword = await bcrypt.hash(
       envVars.SUPER_ADMIN_PASSWORD,
-      envVars.BCRYPT_SALT_ROUND
+      envVars.BCRYPT_SALT_ROUND,
     );
 
     const authProvider: IAuthProvider = {

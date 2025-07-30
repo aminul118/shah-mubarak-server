@@ -12,20 +12,20 @@ router.post(
   "/register",
   multerUpload.single("file"),
   validateRequest(userValidation.createUserZodSchema),
-  UserControllers.createUser
+  UserControllers.createUser,
 );
 
 router.patch(
   "/:id",
   checkAuth(...Object.values(Role)),
   multerUpload.single("file"),
-  UserControllers.updateUser
+  UserControllers.updateUser,
 );
 
 router.get(
   "/all-users",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
-  UserControllers.getAllUsers
+  UserControllers.getAllUsers,
 );
 
 export const UserRoutes = router;

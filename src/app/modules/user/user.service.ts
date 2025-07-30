@@ -17,7 +17,7 @@ const createUserService = async (payload: Partial<IUser>) => {
 
   const hashedPassword = await bcryptjs.hash(
     password as string,
-    envVars.BCRYPT_SALT_ROUND
+    envVars.BCRYPT_SALT_ROUND,
   );
 
   const authProvider: IAuthProvider = {
@@ -38,7 +38,7 @@ const createUserService = async (payload: Partial<IUser>) => {
 const updateUser = async (
   userId: string,
   payload: Partial<IUser>,
-  decodedToken: JwtPayload
+  decodedToken: JwtPayload,
 ) => {
   const isUserExist = await User.findById(userId);
   if (!isUserExist) {
@@ -63,7 +63,7 @@ const updateUser = async (
     if (payload.password) {
       payload.password = await bcryptjs.hash(
         payload.password,
-        envVars.BCRYPT_SALT_ROUND
+        envVars.BCRYPT_SALT_ROUND,
       );
     }
 

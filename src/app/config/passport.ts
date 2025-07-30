@@ -33,7 +33,7 @@ const localVerifyFunction: VerifyFunctionWithRequest = async (
   req,
   email,
   password,
-  done
+  done,
 ) => {
   try {
     const user = await User.findOne({ email });
@@ -48,13 +48,13 @@ const localVerifyFunction: VerifyFunctionWithRequest = async (
 
     if (isGoogleAuthenticate && !user.password) {
       return done(
-        "You have authenticated through Google. So if you want to login with credentials, then at first login with google and set a password for your Gmail and then you can login with email and password"
+        "You have authenticated through Google. So if you want to login with credentials, then at first login with google and set a password for your Gmail and then you can login with email and password",
       );
     }
 
     const isPasswordMatched = await bcrypt.compare(
       password,
-      user.password as string
+      user.password as string,
     );
 
     if (!isPasswordMatched) {
@@ -83,7 +83,7 @@ const googleVerifyFunction = async (
   accessToken: string,
   refreshToken: string,
   profile: Profile,
-  done: GoogleVerifyCallback
+  done: GoogleVerifyCallback,
 ) => {
   try {
     const email = profile.emails?.[0]?.value;
@@ -141,7 +141,7 @@ passport.deserializeUser(
       }
       done(error);
     }
-  }
+  },
 );
 
 export default passport;

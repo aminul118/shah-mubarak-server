@@ -31,7 +31,7 @@ app.use(
     //   secure: process.env.NODE_ENV === "production",
     //   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     // },
-  })
+  }),
 );
 
 // Passport authentication
@@ -56,7 +56,7 @@ app.use(
       }
     },
     credentials: true,
-  })
+  }),
 );
 
 // Routes

@@ -2,7 +2,7 @@ import httpStatus from "http-status-codes";
 import AppError from "../../errorHelpers/AppError";
 import { ISchedule } from "./schedule.interface";
 import { Schedule } from "./schedule.model";
-import  sendEmail  from "../../utils/sendEmail";
+import sendEmail from "../../utils/sendEmail";
 import { generateJitsiLink } from "./schedule.utils";
 import envVars from "../../config/env";
 
@@ -40,7 +40,7 @@ const createSchedule = async (payload: ISchedule) => {
       meetLink: result.meetLink,
     },
   });
- 
+
   await sendEmail({
     to: envVars.ADMIN_EMAIL,
     subject: `New Meeting Scheduled: ${result.subject}`,

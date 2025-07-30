@@ -18,7 +18,7 @@ const checkAuth =
       }
       const verifiedToken = verifyToken(
         accessToken,
-        envVars.JWT_ACCESS_SECRET
+        envVars.JWT_ACCESS_SECRET,
       ) as JwtPayload;
 
       if (!verifiedToken) {
@@ -40,7 +40,7 @@ const checkAuth =
       ) {
         throw new AppError(
           httpStatus.BAD_REQUEST,
-          `User is ${isUserExist.isActive}`
+          `User is ${isUserExist.isActive}`,
         );
       }
       if (isUserExist.isDeleted) {

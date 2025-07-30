@@ -40,7 +40,7 @@ const credentialsLogin = catchAsync(
         },
       });
     })(req, res, next);
-  }
+  },
 );
 
 const getNewAccessToken = catchAsync(async (req: Request, res: Response) => {
@@ -49,7 +49,7 @@ const getNewAccessToken = catchAsync(async (req: Request, res: Response) => {
   if (!refreshToken) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      "No refresh token received from cookies"
+      "No refresh token received from cookies",
     );
   }
   const tokenInfo = await AuthServices.getNewAccessToken(refreshToken);
@@ -92,7 +92,7 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
   await AuthServices.resetPassword(
     oldPassword,
     newPassword,
-    decodedToken as JwtPayload
+    decodedToken as JwtPayload,
   );
 
   sendResponse(res, {
@@ -111,7 +111,7 @@ const resetPassword = catchAsync(async (req: Request, res: Response) => {
   await AuthServices.resetPassword(
     oldPassword,
     newPassword,
-    decodedToken as JwtPayload
+    decodedToken as JwtPayload,
   );
 
   sendResponse(res, {
@@ -166,7 +166,7 @@ const googleCallbackController = catchAsync(
     setAuthCookie(res, tokenInfo);
 
     res.redirect(`${envVars.FRONTEND_URL}/${redirectTo}`);
-  }
+  },
 );
 
 export const AuthController = {

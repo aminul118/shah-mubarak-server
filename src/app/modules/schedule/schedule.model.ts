@@ -47,7 +47,7 @@ const scheduleSchema = new Schema<ISchedule>(
   {
     timestamps: true,
     versionKey: false,
-  }
+  },
 );
 
 const Schedule = model<ISchedule>("Schedule", scheduleSchema);

@@ -11,7 +11,7 @@ const subscriptionSchema = new Schema<ISubscription>(
   },
   {
     versionKey: false,
-  }
+  },
 );
 
 const Subscription = model<ISubscription>("Subscription", subscriptionSchema);

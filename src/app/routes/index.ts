@@ -4,6 +4,7 @@ import AuthRouter from "../modules/auth/auth.route";
 import { ScheduleRouter } from "../modules/schedule/schedule.routes";
 import { ContactRouter } from "../modules/contact/contact.route";
 import { SubscriptionRoute } from "../modules/subscription/subscription.route";
+import { BlogRouter } from "../modules/blog/blog.route";
 
 interface IModuleRoutes {
   path: string;
@@ -24,6 +25,10 @@ const moduleRoutes: IModuleRoutes[] = [
   {
     path: "schedule",
     route: ScheduleRouter,
+  },
+  {
+    path: "blog",
+    route: BlogRouter,
   },
   {
     path: "contact",

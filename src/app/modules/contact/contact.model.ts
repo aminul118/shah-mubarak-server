@@ -3,7 +3,7 @@ import { IContact } from "./contact.interface";
 
 const emailRegex = new RegExp(
   '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@(([^<>()[\\]\\.,;:\\s@"]+\\.)+[^<>()[\\]\\.,;:\\s@"]{2,})$',
-  "i"
+  "i",
 );
 
 const contactSchema = new Schema<IContact>(
@@ -25,7 +25,7 @@ const contactSchema = new Schema<IContact>(
   {
     timestamps: true,
     versionKey: false,
-  }
+  },
 );
 
 const Contact = model<IContact>("Contact", contactSchema);

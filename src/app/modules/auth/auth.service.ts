@@ -7,7 +7,7 @@ import { JwtPayload } from "jsonwebtoken";
 import envVars from "../../config/env";
 import { IAuthProvider, IsActive } from "../user/user.interface";
 import jwt from "jsonwebtoken";
-import  sendEmail  from "../../utils/sendEmail";
+import sendEmail from "../../utils/sendEmail";
 
 const getNewAccessToken = async (refreshToken: string) => {
   return await createNewAccessTokenWithRefreshToken(refreshToken);
@@ -16,7 +16,7 @@ const getNewAccessToken = async (refreshToken: string) => {
 const changePassword = async (
   oldPassword: string,
   newPassword: string,
-  decodedToken: JwtPayload
+  decodedToken: JwtPayload,
 ) => {
   const user = await User.findById(decodedToken.userId);
 
@@ -26,7 +26,7 @@ const changePassword = async (
 
   const isOldPassword = await bcryptjs.compare(
     oldPassword,
-    user.password as string
+    user.password as string,
   );
 
   if (!isOldPassword) {
@@ -40,7 +40,7 @@ const changePassword = async (
 const resetPassword = async (
   oldPassword: string,
   newPassword: string,
-  decodedToken: JwtPayload
+  decodedToken: JwtPayload,
 ) => {
   const user = await User.findById(decodedToken.userId);
 
@@ -50,7 +50,7 @@ const resetPassword = async (
 
   const isOldPassword = await bcryptjs.compare(
     oldPassword,
-    user.password as string
+    user.password as string,
   );
 
   if (!isOldPassword) {
@@ -73,13 +73,13 @@ const setPassword = async (userId: string, plainPassword: string) => {
   ) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      "You have already set password. Now you can change the password from your profile password update"
+      "You have already set password. Now you can change the password from your profile password update",
     );
   }
 
   const hashedPassword = await bcryptjs.hash(
     plainPassword,
-    envVars.BCRYPT_SALT_ROUND
+    envVars.BCRYPT_SALT_ROUND,
   );
 
   const credentialProvider: IAuthProvider = {
@@ -108,7 +108,7 @@ const forgotPassword = async (email: string) => {
   ) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      `User is ${isUserExist.isActive}`
+      `User is ${isUserExist.isActive}`,
     );
   }
   if (isUserExist.isDeleted) {
